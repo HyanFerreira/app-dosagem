@@ -46,8 +46,8 @@ Todo o crédito pelo desenvolvimento original da lógica de dosagem e aplicaçã
 
 > 🚧 Em desenvolvimento
 
-Funcionalidades já implementadas:
-...
+<!-- Funcionalidades já implementadas: -->
+
 
 Funcionalidades em progresso:
 - [ ] Estruturação inicial do backend em Node.js
