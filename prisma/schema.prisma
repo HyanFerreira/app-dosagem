@@ -1,0 +1,185 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model consumo_piloto {
+  id        Int      @id @default(autoincrement())
+  kg_piloto Float?   @db.Float
+  ensaio_id Int?
+  ensaios   ensaios? @relation(fields: [ensaio_id], references: [id], onDelete: Cascade, onUpdate: Restrict, map: "consumo_piloto_ibfk_1")
+
+  @@index([ensaio_id], map: "ensaio_id")
+}
+
+model consumo_pobre {
+  id        Int      @id @default(autoincrement())
+  kg_pobre  Float?   @db.Float
+  ensaio_id Int?
+  ensaios   ensaios? @relation(fields: [ensaio_id], references: [id], onDelete: Cascade, onUpdate: Restrict, map: "consumo_pobre_ibfk_1")
+
+  @@index([ensaio_id], map: "ensaio_id")
+}
+
+model consumo_rico {
+  id        Int      @id @default(autoincrement())
+  kg_rico   Float?   @db.Float
+  ensaio_id Int?
+  ensaios   ensaios? @relation(fields: [ensaio_id], references: [id], onDelete: Cascade, onUpdate: Restrict, map: "consumo_rico_ibfk_1")
+
+  @@index([ensaio_id], map: "ensaio_id")
+}
+
+model cp_piloto {
+  id          Int      @id @default(autoincrement())
+  resistencia Float?   @db.Float
+  idade       Int?
+  ensaio_id   Int?
+  ensaios     ensaios? @relation(fields: [ensaio_id], references: [id], onDelete: Cascade, onUpdate: Restrict, map: "cp_piloto_ibfk_1")
+
+  @@index([ensaio_id], map: "ensaio_id")
+}
+
+model cp_pobre {
+  id          Int      @id @default(autoincrement())
+  resistencia Float?   @db.Float
+  idade       Int?
+  ensaio_id   Int?
+  ensaios     ensaios? @relation(fields: [ensaio_id], references: [id], onDelete: Cascade, onUpdate: Restrict, map: "cp_pobre_ibfk_1")
+
+  @@index([ensaio_id], map: "ensaio_id")
+}
+
+model cp_rico {
+  id          Int      @id @default(autoincrement())
+  resistencia Float?   @db.Float
+  idade       Int?
+  ensaio_id   Int?
+  ensaios     ensaios? @relation(fields: [ensaio_id], references: [id], onDelete: Cascade, onUpdate: Restrict, map: "cp_rico_ibfk_1")
+
+  @@index([ensaio_id], map: "ensaio_id")
+}
+
+model dosagem_piloto {
+  id               Int      @id @default(autoincrement())
+  alfa             Float?   @db.Float
+  c_unitario       Float?   @db.Float
+  a_unitario       Float?   @db.Float
+  b_unitario       Float?   @db.Float
+  c_massa          Float?   @db.Float
+  a_massa          Float?   @db.Float
+  b_massa          Float?   @db.Float
+  c_acr            Float?   @db.Float
+  a_acr            Float?   @db.Float
+  a_massa_umida    Float?   @db.Float
+  umidade_agregado Float?   @db.Float
+  agua             Float?   @db.Float
+  agua_cimento     Float?   @db.Float
+  indice           Int?
+  ensaio_id        Int?
+  ensaios          ensaios? @relation(fields: [ensaio_id], references: [id], onDelete: Cascade, onUpdate: Restrict, map: "dosagem_piloto_ibfk_1")
+
+  @@index([ensaio_id], map: "ensaio_id")
+}
+
+model dosagem_pobre {
+  id               Int      @id @default(autoincrement())
+  alfa             Float?   @db.Float
+  c_unitario       Float?   @db.Float
+  a_unitario       Float?   @db.Float
+  b_unitario       Float?   @db.Float
+  c_massa          Float?   @db.Float
+  a_massa          Float?   @db.Float
+  b_massa          Float?   @db.Float
+  c_acr            Float?   @db.Float
+  a_acr            Float?   @db.Float
+  a_massa_umida    Float?   @db.Float
+  umidade_agregado Float?   @db.Float
+  agua             Float?   @db.Float
+  agua_cimento     Float?   @db.Float
+  ensaio_id        Int?
+  ensaios          ensaios? @relation(fields: [ensaio_id], references: [id], onDelete: Cascade, onUpdate: Restrict, map: "dosagem_pobre_ibfk_1")
+
+  @@index([ensaio_id], map: "ensaio_id")
+}
+
+model dosagem_rico {
+  id               Int      @id @default(autoincrement())
+  alfa             Float?   @db.Float
+  c_unitario       Float?   @db.Float
+  a_unitario       Float?   @db.Float
+  b_unitario       Float?   @db.Float
+  c_massa          Float?   @db.Float
+  a_massa          Float?   @db.Float
+  b_massa          Float?   @db.Float
+  c_acr            Float?   @db.Float
+  a_acr            Float?   @db.Float
+  a_massa_umida    Float?   @db.Float
+  umidade_agregado Float?   @db.Float
+  agua             Float?   @db.Float
+  agua_cimento     Float?   @db.Float
+  ensaio_id        Int?
+  ensaios          ensaios? @relation(fields: [ensaio_id], references: [id], onDelete: Cascade, onUpdate: Restrict, map: "dosagem_rico_ibfk_1")
+
+  @@index([ensaio_id], map: "ensaio_id")
+}
+
+model ensaios {
+  id             Int              @id @default(autoincrement())
+  nome           String?          @db.VarChar(30)
+  piloto         Float?           @db.Float
+  rico           Float?           @db.Float
+  pobre          Float?           @db.Float
+  cp             Float?           @db.Float
+  pesobrita      Float?           @db.Float
+  slump          Float?           @db.Float
+  umidade        Float?           @db.Float
+  volume         Float?           @db.Float
+  consumo_piloto consumo_piloto[]
+  consumo_pobre  consumo_pobre[]
+  consumo_rico   consumo_rico[]
+  cp_piloto      cp_piloto[]
+  cp_pobre       cp_pobre[]
+  cp_rico        cp_rico[]
+  dosagem_piloto dosagem_piloto[]
+  dosagem_pobre  dosagem_pobre[]
+  dosagem_rico   dosagem_rico[]
+  resultados     resultados[]
+  teste          teste[]
+}
+
+model resultados {
+  id        Int      @id @default(autoincrement())
+  k1        Float?   @db.Float
+  k2        Float?   @db.Float
+  k3        Float?   @db.Float
+  k4        Float?   @db.Float
+  k5        Float?   @db.Float
+  k6        Float?   @db.Float
+  ensaio_id Int?
+  ensaios   ensaios? @relation(fields: [ensaio_id], references: [id], onDelete: Cascade, onUpdate: Restrict, map: "resultados_ibfk_1")
+
+  @@index([ensaio_id], map: "ensaio_id")
+}
+
+model teste {
+  id       Int      @id @default(autoincrement())
+  a        Float?   @db.Float
+  cu       Float?   @db.Float
+  au       Float?   @db.Float
+  bu       Float?   @db.Float
+  cm       Float?   @db.Float
+  am       Float?   @db.Float
+  bm       Float?   @db.Float
+  cacr     Float?   @db.Float
+  aacr     Float?   @db.Float
+  teste_id Int?
+  ensaios  ensaios? @relation(fields: [teste_id], references: [id], onDelete: Cascade, onUpdate: Restrict, map: "teste_ibfk_1")
+
+  @@index([teste_id], map: "teste_id")
+}
