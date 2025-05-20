@@ -26,8 +26,6 @@ O concreto é o material de construção mais utilizado no mundo. Para que ele a
 - **Express.js**
 - **MongoDB** (Banco de Dados)
 - **JWT** para autenticação
-- **React** (Frontend - planejado)
-- **Bootstrap/Tailwind CSS** (UI - planejado)
 
 ## 📚 Base Teórica e Créditos
 
@@ -49,10 +47,11 @@ Todo o crédito pelo desenvolvimento original da lógica de dosagem e aplicaçã
 > 🚧 Em desenvolvimento
 
 Funcionalidades já implementadas:
-- [x] Estruturação inicial do backend em Node.js
-- [x] Lógica de dosagem adaptada do projeto original
+...
 
 Funcionalidades em progresso:
+- [ ] Estruturação inicial do backend em Node.js
+- [ ] Lógica de dosagem adaptada do projeto original
 - [ ] Sistema de autenticação de usuários
 - [ ] Salvamento de cálculos no banco de dados
 - [ ] Compartilhamento público/privado dos cálculos
