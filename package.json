@@ -1,0 +1,41 @@
+{
+  "name": "app-dosagem",
+  "version": "1.0.0",
+  "description": "Projeto de reescrita do app de dosagem (de Python para Node.js)",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HyanFerreira/app-dosagem.git"
+  },
+  "keywords": [
+    "dosagem",
+    "pesagem",
+    "controle",
+    "ensaio piloto",
+    "nodejs",
+    "express",
+    "mysql",
+    "mvc",
+    "backend",
+    "api"
+  ],
+  "author": "Hyan Ferreira",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/HyanFerreira/app-dosagem/issues"
+  },
+  "homepage": "https://github.com/HyanFerreira/app-dosagem#readme",
+  "dependencies": {
+    "@prisma/client": "^6.8.2",
+    "cors": "^2.8.5",
+    "express": "^5.1.0"
+  },
+  "devDependencies": {
+    "prisma": "^6.8.2"
+  }
+}
